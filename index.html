@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coloring Book Shop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background: #e0f7fa;
+      padding-top: 70px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .navbar {
+      background-color: #00796b;
+    }
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: white !important;
+      cursor: pointer;
+    }
+    .nav-link {
+      color: white !important;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .nav-link.active {
+      color: #b2dfdb !important;
+      text-decoration: underline;
+    }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      height: 400px;
+      border-radius: 15px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-shadow: 1px 1px 4px #000;
+      margin-bottom: 40px;
+    }
+    h1, h2 {
+      color: #004d40;
+    }
+    .product-card {
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(0, 121, 107, 0.3);
+      padding: 20px;
+      background: white;
+      margin-bottom: 30px;
+      transition: transform 0.3s ease;
+      text-align: center;
+      cursor: default;
+    }
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+    .product-card img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    footer {
+      margin-top: 60px;
+      padding: 20px 0;
+      background-color: #00796b;
+      color: white;
+      text-align: center;
+      font-weight: 600;
+    }
+    section {
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+    button.btn-teal {
+      background: #004d40;
+      color: white;
+      border: none;
+    }
+    button.btn-teal:hover {
+      background: #00332e;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar fixed-top navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" onclick="showSection('home')">Coloring Book Shop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="color:white;"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" onclick="showSection('home')">Home</a></li>
+          <li class="nav-item"><a class="nav-link" onclick="showSection('about')">About</a></li>
+          <li class="nav-item"><a class="nav-link" onclick="showSection('products')">Products</a></li>
+          <li class="nav-item"><a class="nav-link" onclick="showSection('basket')">Basket</a></li>
+          <li class="nav-item"><a class="nav-link" onclick="showSection('checkout')">Checkout</a></li>
+          <li class="nav-item"><a class="nav-link" onclick="showSection('contact')">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Home -->
+  <section id="home" class="container active">
+    <div class="hero text-center">
+      <h1>Welcome to the Coloring Book Shop!</h1>
+      <p>Unleash your creativity with our magical coloring books for all ages.</p>
+    </div>
+    <h2 class="mb-4">Our best selling books</h2>
+    <div class="row featured-products">
+      <div class="col-md-4 mb-4">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1505692794404-40aa51dd81c7?auto=format&fit=crop&w=600&q=80" alt="Animal Adventures" />
+          <h5>Animal Adventures</h5>
+          <p>Fun coloring book for kids filled with cute animals.</p>
+          <p class="fw-bold">€5.99</p>
+          <button class="btn btn-teal btn-sm" onclick="addToBasket('Animal Adventures', 5.99)">Add to Basket</button>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935?auto=format&fit=crop&w=600&q=80" alt="Fantasy Worlds" />
+          <h5>Fantasy Worlds</h5>
+          <p>Detailed scenes to inspire teens & adults.</p>
+          <p class="fw-bold">€7.99</p>
+          <button class="btn btn-teal btn-sm" onclick="addToBasket('Fantasy Worlds', 7.99)">Add to Basket</button>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935?auto=format&fit=crop&w=600&q=80" alt="Nature Scenes" />
+          <h5>Nature Scenes</h5>
+          <p>Relax with beautiful landscapes to color.</p>
+          <p class="fw-bold">€6.99</p>
+          <button class="btn btn-teal btn-sm" onclick="addToBasket('Nature Scenes', 6.99)">Add to Basket</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="container">
+    <h1>About Us</h1>
+    <p>
+      At Coloring Book Shop, we believe that creativity should be accessible to everyone. We offer a wide variety of unique and high-quality coloring books designed for kids, teens, and adults alike. Whether you're looking to relax, learn, or just have fun, our books are here to brighten your world with color.
+    </p>
+  </section>
+
+  <!-- Products -->
+  <section id="products" class="container">
+    <h1 class="mb-4">Our Coloring Books</h1>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1505692794404-40aa51dd81c7?auto=format&fit=crop&w=600&q=80" alt="Animal Adventures" />
+          <h5>Animal Adventures</h5>
+          <p>Fun coloring book for kids filled with cute animals.</p>
+          <p class="fw-bold">€5.99</p>
+          <button class="btn btn-teal" onclick="addToBasket('Animal Adventures', 5.99)">Add to Basket</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935?auto=format&fit=crop&w=600&q=80" alt="Fantasy Worlds" />
+          <h5>Fantasy Worlds</h5>
+          <p>Detailed scenes to inspire teens & adults.</p>
+          <p class="fw-bold">€7.99</p>
+          <button class="btn btn-teal" onclick="addToBasket('Fantasy Worlds', 7.99)">Add to Basket</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935?auto=format&fit=crop&w=600&q=80" alt="Nature Scenes" />
+          <h5>Nature Scenes</h5>
+          <p>Relax with beautiful landscapes to color.</p>
+          <p class="fw-bold">€6.99</p>
+          <button class="btn btn-teal" onclick="addToBasket('Nature Scenes', 6.99)">Add to Basket</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Basket -->
+  <section id="basket" class="container">
+    <h1>Your Basket</h1>
+    <ul id="basket-list" class="list-group mb-3"></ul>
+    <p><strong>Total: €<span id="total">0.00</span></strong></p>
+  </section>
+
+  <!-- Checkout -->
+  <section id="checkout" class="container">
+    <h1>Checkout</h1>
+    <p>This is where your Stripe payment form will go.</p>
+    <button class="btn btn-teal" onclick="alert('Checkout is not implemented yet!')">Proceed to Payment</button>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="container">
+    <h1>Contact Us</h1>
+    <form onsubmit="event.preventDefault(); alert('Message sent! Thank you.'); this.reset();">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" required />
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" required />
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <textarea class="form-control" id="message" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-teal">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Coloring Book Shop &nbsp;&bull;&nbsp; Designed with 💙 by You
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      const navLinks = [...document.querySelectorAll('.nav-link')];
+      const clickedLink = navLinks.find(link => link.textContent.trim().toLowerCase() === sectionId);
+      if (clickedLink) clickedLink.classList.add('active');
+    }
+
+    let basket = [];
+
+    function addToBasket(product, price) {
+      basket.push({ product, price });
+      updateBasket();
+      alert(`Added "${product}" to basket.`);
+      showSection('basket');
+    }
+
+    function updateBasket() {
+      const list = document.getElementById('basket-list');
+      const totalElem = document.getElementById('total');
+      list.innerHTML = '';
+
+      let total = 0;
+      basket.forEach((item, i) => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item d-flex justify-content-between align-items-center';
+        li.textContent = `${item.product} - €${item.price.toFixed(2)}`;
+
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'btn btn-sm btn-danger';
+        removeBtn.textContent = 'Remove';
+        removeBtn.onclick = () => {
+          basket.splice(i, 1);
+          updateBasket();
+        };
+        li.appendChild(removeBtn);
+
+        list.appendChild(li);
+        total += item.price;
+      });
+
+      totalElem.textContent = total.toFixed(2);
+    }
+  </script>
+</body>
+</html>
+
+
+
+
