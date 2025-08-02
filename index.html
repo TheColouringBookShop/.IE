@@ -101,7 +101,7 @@
           <li class="nav-item"><a class="nav-link active" onclick="showSection('home')">Home</a></li>
           <li class="nav-item"><a class="nav-link" onclick="showSection('about')">About</a></li>
           <li class="nav-item"><a class="nav-link" onclick="showSection('products')">Products</a></li>
-          <li class="nav-item"><a class="nav-link" onclick="showSection('basket')">Basket</a></li>
+          <!-- Removed Basket nav link -->
           <li class="nav-item"><a class="nav-link" onclick="showSection('checkout')">Checkout</a></li>
           <li class="nav-item"><a class="nav-link" onclick="showSection('contact')">Contact</a></li>
         </ul>
@@ -189,16 +189,14 @@
     </div>
   </section>
 
-  <!-- Basket -->
-  <section id="basket" class="container">
-    <h1>Your Basket</h1>
-    <ul id="basket-list" class="list-group mb-3"></ul>
-    <p><strong>Total: €<span id="total">0.00</span></strong></p>
-  </section>
+  <!-- Removed separate Basket section -->
 
-  <!-- Checkout -->
+  <!-- Checkout (now includes basket display) -->
   <section id="checkout" class="container">
     <h1>Checkout</h1>
+    <h3>Your Basket</h3>
+    <ul id="basket-list" class="list-group mb-3"></ul>
+    <p><strong>Total: €<span id="total">0.00</span></strong></p>
     <p>This is where your Stripe payment form will go.</p>
     <button class="btn btn-teal" onclick="alert('Checkout is not implemented yet!')">Proceed to Payment</button>
   </section>
@@ -248,8 +246,7 @@
     function addToBasket(product, price) {
       basket.push({ product, price });
       updateBasket();
-      alert(`Added "${product}" to basket.`);
-      showSection('basket');
+      // Removed alert and showSection calls
     }
 
     function updateBasket() {
@@ -278,9 +275,16 @@
 
       totalElem.textContent = total.toFixed(2);
     }
+
+    // Optional: Initialize basket display on page load if needed
+    document.addEventListener('DOMContentLoaded', () => {
+      updateBasket();
+    });
   </script>
 </body>
 </html>
+
+
 
 
 
